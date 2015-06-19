@@ -3,6 +3,7 @@
 ;; Copyright (C) 2015  Charles L.G. Comstock
 
 ;; Author: Charles L.G. Comstock <dgtized@gmail.com>
+;; Version: 0.1
 ;; Packages-Requires: ((emacs "24.1"))
 ;; Keywords: processes, unix
 
