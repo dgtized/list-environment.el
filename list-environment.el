@@ -27,13 +27,19 @@
 
 (require 'tabulated-list)
 
+(defvar list-environment-value-history nil)
+
 (defun list-environment-setenv (value)
-  (interactive (list
-                (read-string (format "Setenv %s: " (aref (tabulated-list-get-entry) 0))
-                             nil nil (aref (tabulated-list-get-entry) 1))))
+  (interactive
+   (list
+    (let ((entry (tabulated-list-get-entry)))
+      (read-string (format "Setenv %s: " (aref entry 0))
+                   (aref entry 1)
+                   'list-environment-value-history))))
   (let ((entry (tabulated-list-get-entry)))
     (message "Setenv %s %s -> %s" (aref entry 0) (aref entry 1) value)
-    (setenv (aref entry 0) value)))
+    (setenv (aref entry 0) value)
+    (tabulated-list-revert)))
 
 (defun list-environment-entries ()
   (mapcar (lambda (env)
