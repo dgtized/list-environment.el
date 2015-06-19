@@ -54,7 +54,10 @@
 
 (defun list-environment-entries ()
   (mapcar (lambda (env)
-            (let ((keyvals (split-string env "=")))
+            (let* ((kv (split-string env "="))
+                   (keyvals (if (= (length kv) 2)
+                                kv
+                              (append kv (list "")))))
               (list (car keyvals) (vconcat keyvals))))
           process-environment))
 
