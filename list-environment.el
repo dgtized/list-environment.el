@@ -21,7 +21,14 @@
 
 ;;; Commentary:
 
-;; Tabulated environment listing the process environment
+;; List process environment variables in a readable and tabulated fashion. Edit
+;; or clear the environment variable at point, and add new name=value pairs.
+
+;;; Todo:
+
+;; * Command to revert environment variable to value in `initial-environment'
+;; * Smarter editing for colon separated values like PATH
+;; * Better support for long names or values greater than line length
 
 ;;; Code:
 
