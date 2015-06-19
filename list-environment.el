@@ -69,7 +69,7 @@
     tabulated-list-mode "Process-Environment"
   "Major mode for listing process environment.
 \\{list-environment-mode-map\}"
-  (setq tabulated-list-format [("Name" 20 t)
+  (setq tabulated-list-format [("Name" 25 t)
                                ("Value" 50 t)]
         tabulated-list-sort-key (cons "Name" nil)
         tabulated-list-padding 2
