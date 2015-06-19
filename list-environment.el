@@ -27,20 +27,32 @@
 
 (require 'tabulated-list)
 
+(defun list-environment-setenv (value)
+  (interactive (list
+                (read-string (format "Setenv %s: " (aref (tabulated-list-get-entry) 0))
+                             nil nil (aref (tabulated-list-get-entry) 1))))
+  (let ((entry (tabulated-list-get-entry)))
+    (message "Setenv %s %s -> %s" (aref entry 0) (aref entry 1) value)
+    (setenv (aref entry 0) value)))
+
 (defun list-environment-entries ()
   (mapcar (lambda (env)
             (let ((keyvals (split-string env "=")))
               (list (car keyvals) (vconcat keyvals))))
           process-environment))
 
-(define-derived-mode list-environment-mode tabulated-list-mode "Process Environment"
-  "Major mode for listing process environment"
+(define-derived-mode list-environment-mode
+    tabulated-list-mode "Process-Environment"
+  "Major mode for listing process environment.
+\\{list-environment-mode-map\}"
   (setq tabulated-list-format [("NAME" 20 t)
                                ("VALUE" 50 t)]
         tabulated-list-sort-key (cons "NAME" nil)
         tabulated-list-padding 2
         tabulated-list-entries #'list-environment-entries)
   (tabulated-list-init-header))
+
+(define-key list-environment-mode-map (kbd "s") 'list-environment-setenv)
 
 (defun list-environment ()
   "List process environment in a tabulated view"
