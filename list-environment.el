@@ -32,6 +32,12 @@
   (call-interactively 'setenv)
   (tabulated-list-revert))
 
+(defun list-environment-clear ()
+  "Remove current environment variable value"
+  (interactive)
+  (let ((current-prefix-arg t))
+    (list-environment-setenv)))
+
 (defun list-environment-setenv ()
   (interactive)
   (let ((name (tabulated-list-get-id)))
@@ -62,6 +68,7 @@
 
 (define-key list-environment-mode-map (kbd "s") 'list-environment-setenv)
 (define-key list-environment-mode-map (kbd "a") 'list-environment-addenv)
+(define-key list-environment-mode-map (kbd "d") 'list-environment-clear)
 
 (defun list-environment ()
   "List process environment in a tabulated view"
