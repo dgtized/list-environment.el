@@ -28,17 +28,19 @@
 (require 'tabulated-list)
 
 (defun list-environment-addenv ()
+  "Set a new environment variable."
   (interactive)
   (call-interactively 'setenv)
   (tabulated-list-revert))
 
 (defun list-environment-clear ()
-  "Remove current environment variable value"
+  "Remove current environment variable value."
   (interactive)
   (let ((current-prefix-arg t))
     (list-environment-setenv)))
 
 (defun list-environment-setenv ()
+  "Edit the value of current environment variable."
   (interactive)
   (let ((name (tabulated-list-get-id)))
     (minibuffer-with-setup-hook
@@ -47,6 +49,7 @@
     (tabulated-list-revert)))
 
 (defun list-environment-entries ()
+  "Generate environment variable entries list for tabulated-list."
   (mapcar (lambda (env)
             (let* ((kv (split-string env "="))
                    (keyvals (if (= (length kv) 2)
@@ -71,7 +74,7 @@
 (define-key list-environment-mode-map (kbd "d") 'list-environment-clear)
 
 (defun list-environment ()
-  "List process environment in a tabulated view"
+  "List process environment in a tabulated view."
   (interactive)
   (let ((buffer (get-buffer-create "*Process-Environment*")))
     (pop-to-buffer buffer)
