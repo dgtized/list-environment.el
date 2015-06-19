@@ -3,6 +3,7 @@
 ;; Copyright (C) 2015  Charles L.G. Comstock
 
 ;; Author: Charles L.G. Comstock <dgtized@gmail.com>
+;; Packages-Requires: ((emacs "24.1"))
 ;; Keywords: processes, unix
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -24,13 +25,30 @@
 
 ;;; Code:
 
+(require 'tabulated-list)
+
+(defun list-environment-entries ()
+  (mapcar (lambda (env)
+            (let ((keyvals (split-string env "=")))
+              (list (car keyvals) (vconcat keyvals))))
+          process-environment))
+
+(define-derived-mode list-environment-mode tabulated-list-mode "Process Environment"
+  "Major mode for listing process environment"
+  (setq tabulated-list-format [("NAME" 20 t)
+                               ("VALUE" 50 t)]
+        tabulated-list-sort-key (cons "NAME" nil)
+        tabulated-list-padding 2
+        tabulated-list-entries #'list-environment-entries)
+  (tabulated-list-init-header))
+
 (defun list-environment ()
+  "List process environment in a tabulated view"
   (interactive)
-  (let ((buffer (get-buffer-create "*Environment*")))
-    (set-buffer buffer)
-    (dolist (env process-environment)
-      (insert env "\n"))
-    (pop-to-buffer buffer)))
+  (let ((buffer (get-buffer-create "*Process-Environment*")))
+    (pop-to-buffer buffer)
+    (list-environment-mode)
+    (tabulated-list-print)))
 
 (provide 'list-environment)
 ;;; list-environment.el ends here
