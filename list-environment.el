@@ -27,7 +27,18 @@
 
 (require 'tabulated-list)
 
+(defvar list-environment-name-history nil)
 (defvar list-environment-value-history nil)
+
+(defun list-environment-addenv (name value)
+  (interactive
+   (let ((n (read-string "Name: " nil 'list-environment-name-history)))
+     (list n (read-string (format "Setenv %s: " n)
+                          nil
+                          'list-environment-value-history))))
+  (message "Setenv %s: %s" name value)
+  (setenv name value)
+  (tabulated-list-revert))
 
 (defun list-environment-setenv (value)
   (interactive
@@ -59,6 +70,7 @@
   (tabulated-list-init-header))
 
 (define-key list-environment-mode-map (kbd "s") 'list-environment-setenv)
+(define-key list-environment-mode-map (kbd "a") 'list-environment-addenv)
 
 (defun list-environment ()
   "List process environment in a tabulated view"
