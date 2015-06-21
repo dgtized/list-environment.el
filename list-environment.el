@@ -81,6 +81,7 @@
 (define-key list-environment-mode-map (kbd "a") 'list-environment-addenv)
 (define-key list-environment-mode-map (kbd "d") 'list-environment-clear)
 
+;;;###autoload
 (defun list-environment ()
   "List process environment in a tabulated view."
   (interactive)
