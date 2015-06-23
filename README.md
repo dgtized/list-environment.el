@@ -24,9 +24,9 @@ While in `list-environment-mode` the following commands are available:
 
 Keybindings  | Description
 -------------|--------------------------
-<kbd>s</kbd> | Call setenv interactively on the environment variable at point
-<kbd>a</kbd> | Call setenv without a default name
-<kbd>d</kbd> | Call setenv with prefix to clear variable at point
+<kbd>s</kbd> | Set the environment variable at point to a new value
+<kbd>a</kbd> | Add a new environment variable
+<kbd>d</kbd> | Clear environment variable at point
 
 It also supports all the normal `tabulated-list-mode` commands, use <kbd>h</kbd> to run `describe-mode` to view bindings.
 
