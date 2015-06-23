@@ -1,5 +1,7 @@
 # List Environment
 
+[![MELPA](http://melpa.org/packages/list-environment-badge.svg)](http://melpa.org/#/list-environment)
+
 A tabulated process environment editor
 
 ## Usage
@@ -9,6 +11,12 @@ Running:
 <kbd>M-x list-environment</kbd>
 
 will popup a buffer showing the current values in `process-environment` in a nice tabulated view.
+
+## Install
+
+After adding the [MELPA](melpa.org) package archive:
+
+<kbd>M-x package-install [RET] list-environment [RET]
 
 ## Editing Commands
 
