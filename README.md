@@ -14,7 +14,7 @@ will popup a buffer showing the current values in `process-environment` in a nic
 
 ## Install
 
-After adding the [MELPA](melpa.org) package archive:
+After adding the [MELPA](http://melpa.org) package archive:
 
 <kbd>M-x package-install [RET] list-environment [RET]
 
