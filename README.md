@@ -12,6 +12,8 @@ Running:
 
 will popup a buffer showing the current values in `process-environment` in a nice tabulated view.
 
+![List Environment Screenshot](list-environment-screenshot.png)
+
 ## Install
 
 After adding the [MELPA](http://melpa.org) package archive:
