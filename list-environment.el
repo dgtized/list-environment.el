@@ -1,6 +1,6 @@
 ;;; list-environment.el --- A tabulated process environment editor  -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2015  Charles L.G. Comstock
+;; Copyright (C) 2015-2016  Charles L.G. Comstock
 
 ;; Author: Charles L.G. Comstock <dgtized@gmail.com>
 ;; Version: 0.1

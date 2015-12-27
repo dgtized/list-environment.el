@@ -34,6 +34,6 @@ It also supports all the normal `tabulated-list-mode` commands, use <kbd>h</kbd>
 
 # License
 
-Copyright © 2015 Charles L.G. Comstock
+Copyright © 2015-2016 Charles L.G. Comstock
 
 Distributed under the GNU General Public License, version 3
