@@ -60,10 +60,9 @@
   "Generate environment variable entries list for tabulated-list."
   (mapcar (lambda (env)
             (let* ((kv (split-string env "="))
-                   (keyvals (if (= (length kv) 2)
-                                kv
-                              (append kv (list "")))))
-              (list (car keyvals) (vconcat keyvals))))
+                   (key (car kv))
+                   (val (mapconcat #'identity (cdr kv) "=")))
+              (list key (vector key val))))
           process-environment))
 
 (define-derived-mode list-environment-mode
